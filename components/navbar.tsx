@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -25,6 +26,8 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import { Authenticated, Unauthenticated } from "convex/react";
+import SignOut from "@/app/auth/SignOut";
 
 export const Navbar = () => {
   const searchInput = (
@@ -63,7 +66,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -80,12 +83,6 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
-          </Link>
           <Link isExternal aria-label="Github" href={siteConfig.links.github}>
             <GithubIcon className="text-default-500" />
           </Link>
@@ -103,6 +100,16 @@ export const Navbar = () => {
           >
             Sponsor
           </Button>
+        </NavbarItem>
+        <NavbarItem className="hidden md:flex">
+          <Unauthenticated>
+              <Link href="/auth">
+              SignIn
+              </Link>
+          </Unauthenticated>
+          <Authenticated>
+            <SignOut />
+          </Authenticated>
         </NavbarItem>
       </NavbarContent>
 

@@ -112,18 +112,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </footer>
-
-      <style jsx global>{`
-        .gradient-text {
-          background: linear-gradient(45deg, #00bfff, #9f00ff);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-        }
-        .gradient-bg {
-          background: linear-gradient(45deg, #00bfff, #9f00ff);
-        }
-      `}</style>
     </div>
   );
 };
